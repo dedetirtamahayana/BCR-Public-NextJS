@@ -4,8 +4,10 @@ import { Button } from "react-bootstrap";
 import CustomButton from "../CustomButton";
 import Image from "next/image";
 import ImageCar from "@/assets/img/img_car.png";
+import { useRouter } from "next/router";
 
-export const Hero = () => {
+const Hero = () => {
+  const router = useRouter();
   //   const { user } = useSelector((state) => state.login);
   return (
     <section
