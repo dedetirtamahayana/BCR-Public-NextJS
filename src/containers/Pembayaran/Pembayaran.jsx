@@ -1,39 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "@/components/Home/Footer";
 import { Row, Col } from "react-bootstrap";
 import { FaArrowLeft } from "react-icons/fa";
 import Navigation from "@/components/Home/Menu";
 import { Stepper, Step } from "react-form-stepper";
-
-// import Auth from "../../components/auth/index";
+import Auth from "../../components/auth/index";
 import MethodPembayaran from "@/components/Step-Pembayaran/MethodPembayaran/MethodPembayaran";
 import UploadPembayaran from "@/components/Step-Pembayaran/Upload/Upload-Pembayaran";
 import Eticket from "@/components/Step-Pembayaran/E-ticket/Ticket";
 import DetailPesanan from "@/components/Step-Pembayaran/DetailPesanan/DetailPesanan";
+import auth from "@/utils/auth";
 import { useRouter } from "next/router";
+import axios from "axios";
 const Pembayaran = () => {
   const router = useRouter();
   const pembayaranId = router.query.pembayaranId;
   const [content, setContent] = useState(0);
+  const [dataMobil, setdata] = useState();
+  console.log(pembayaranId);
+  const token = auth.getToken();
+  const GetData = async () => {
+    try {
+      const config = {
+        headers: {
+          access_token: token,
+        },
+      };
+      const response = await axios.get(
+        `https://api-car-rental.binaracademy.org/customer/order/${pembayaranId}`,
+        config
+      );
+
+      console.log(response.data);
+      setdata(response.data);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+  useEffect(() => {
+    if (pembayaranId) {
+      GetData();
+    }
+  }, [pembayaranId]);
+
   const RenderContent = () => {
     if (content === 0)
       return (
         <MethodPembayaran
           onClickStepper={(step) => setContent(step)}
-          dataId={pembayaranId}
+          dataMobil={dataMobil}
         />
       );
     if (content === 1)
       return (
         <UploadPembayaran
           onClickStepper={(step) => setContent(step)}
-          dataId={pembayaranId}
+          dataMobil={dataMobil}
         />
       );
-    if (content === 2) return <Eticket dataId={pembayaranId} />;
+    if (content === 2) return <Eticket dataMobil={dataMobil} />;
   };
   return (
-    <>
+    <Auth>
       <Navigation />
       <div className="payment">
         <div className="container">
@@ -59,10 +87,10 @@ const Pembayaran = () => {
           </Col>
         </div>
       </div>
-      <DetailPesanan dataId={pembayaranId} />
+      <DetailPesanan dataMobil={dataMobil} />
       {RenderContent()}
       <Footer />
-    </>
+    </Auth>
   );
 };
 export default Pembayaran;

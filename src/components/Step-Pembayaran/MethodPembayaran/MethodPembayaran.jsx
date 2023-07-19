@@ -2,17 +2,15 @@ import React, { useEffect, useState } from "react";
 import { FiUsers } from "react-icons/fi";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa";
 import { Row, Button, Container, Card, ListGroup } from "react-bootstrap";
-import Check from "../../../assets/img/check.svg";
-import axios from "axios";
+import Check from "@/assets/img/check.svg";
+import Image from "next/image";
 import moment from "moment";
-// import auth from "../../../utils/auth";
 
 const MethodPembayaran = (props) => {
   const { onClickStepper } = props;
   const [show, setShow] = useState(true);
   const [selected, setSelected] = useState();
-  const [datapembayaran, setdata] = useState();
-  const [day, setDay] = useState({});
+  const [day, setDay] = useState();
   const category = {
     Small: "2 - 4 orang",
     small: "2 - 4 orang",
@@ -21,39 +19,27 @@ const MethodPembayaran = (props) => {
     Large: "6 - 8 orang",
     large: "6 - 8 orang",
   };
-  // const token = auth.getToken();
-  const GetData = async () => {
-    try {
-      const config = {
-        headers: {
-          access_token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1c3RvbWVyQGJjci5pbyIsInJvbGUiOiJDdXN0b21lciIsImlhdCI6MTY4OTY5MTI2NX0.Cthqp7EX7gB0hQ5CH6A4-tpXpPXxBWJc3xE_Pg78Iok",
-        },
-      };
-      const response = await axios.get(
-        `https://api-car-rental.binaracademy.org/customer/order/${props.dataId}`,
-        config
-      );
-      console.log(response.data);
-      setdata(response.data);
-      setDay(response.data);
-    } catch {
-      console.log("err");
-    }
-  };
+
   const selectClick = (index) => {
     setSelected(index);
   };
-  const startDate = moment(day.start_rent_at);
-  const endDate = moment(day.finish_rent_at);
 
-  const diffDay = endDate.diff(startDate, "days");
-  console.log(diffDay);
+  const getDiffDay = () => {
+    const startDate = moment(props.dataMobil.start_rent_at);
+    const endDate = moment(props.dataMobil.finish_rent_at);
+    console.log(startDate);
+    const diffDay = endDate.diff(startDate, "days");
+    console.log(diffDay);
+    setDay(diffDay);
+  };
+
   useEffect(() => {
-    GetData();
-  }, []);
+    if (props.dataMobil) {
+      getDiffDay();
+    }
+  }, [props.dataMobil]);
 
-  return datapembayaran && datapembayaran.data !== null ? (
+  return props.dataMobil && props.dataMobil !== null ? (
     <Container>
       <Row className="mt-3">
         <div className="col-lg-7">
@@ -79,7 +65,7 @@ const MethodPembayaran = (props) => {
                     <span className="ms-3">BCA Transfer</span>
 
                     {selected === 1 ? (
-                      <img
+                      <Image
                         src={Check}
                         className="float-check-right mt-2"
                         alt="check-list"
@@ -103,7 +89,7 @@ const MethodPembayaran = (props) => {
                     <span className="ms-3">Mandiri Transfer</span>
 
                     {selected === 2 ? (
-                      <img
+                      <Image
                         src={Check}
                         className="float-check-right mt-2"
                         alt="check-list"
@@ -127,7 +113,7 @@ const MethodPembayaran = (props) => {
                     <span className="ms-3">BNI Transfer</span>
 
                     {selected === 3 ? (
-                      <img
+                      <Image
                         src={Check}
                         className="float-check-right mt-2"
                         alt="check-list"
@@ -142,10 +128,10 @@ const MethodPembayaran = (props) => {
         <div className="col-lg-5">
           <Card className="p-3">
             <Card.Body>
-              <p className="fw-bold"> {datapembayaran.Car.name}</p>
+              <p className="fw-bold"> {props.dataMobil.Car.name}</p>
               <p className="disable">
                 <FiUsers className="mb-1 me-2" />
-                {category[datapembayaran.Car.category]}
+                {category[props.dataMobil.Car.category]}
               </p>
               <div className="total">
                 <button
@@ -163,17 +149,15 @@ const MethodPembayaran = (props) => {
                     <FaAngleDown className="mt-1 ms-2" />
                   )}
                 </button>
-                <p className="fw-bold">
-                  Rp. {datapembayaran.Car.price * diffDay}
-                </p>
+                <p className="fw-bold">Rp. {props.dataMobil.Car.price * day}</p>
               </div>
               <div className="collapse" id="collapseExample">
                 <h6 className="fw-bold ">Harga</h6>
                 <div className="total1 text-indent">
                   <li>
-                    Sewa Mobil Rp.{datapembayaran.Car.price} x {diffDay} Hari
+                    Sewa Mobil Rp.{props.dataMobil.Car.price} * {day}
                   </li>
-                  <span>Rp. {datapembayaran.Car.price * diffDay}</span>
+                  <span>Rp. {props.dataMobil.Car.price * day}</span>
                 </div>
                 <h6 className="fw-bold mt-4 ">Biaya Lainnya</h6>
                 <div className="total1 text-indent">
@@ -193,7 +177,7 @@ const MethodPembayaran = (props) => {
                   <p>Total</p>
                   <p className="fw-bold">
                     {" "}
-                    Rp. {datapembayaran.Car.price * diffDay}
+                    Rp. {props.dataMobil.Car.price * day}
                   </p>
                 </div>
               </div>

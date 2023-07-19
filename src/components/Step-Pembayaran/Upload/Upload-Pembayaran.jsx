@@ -15,7 +15,7 @@ import {
   Tab,
 } from "react-bootstrap";
 import CountDown from "./countdown";
-// import auth from "../../../utils/auth";
+import auth from "@/utils/auth";
 
 const UploadPembayaran = (props) => {
   const { onClickStepper } = props;
@@ -26,27 +26,26 @@ const UploadPembayaran = (props) => {
       return <Konfirmasi onClickUpload={(step) => setUpload(step)} />;
     if (upload === 1) return <Upload />;
   };
-  // const token = auth.getToken();
+  const token = auth.getToken();
   const UploadBukti = async () => {
     try {
       const config = {
         headers: {
-          access_token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1c3RvbWVyQGJjci5pbyIsInJvbGUiOiJDdXN0b21lciIsImlhdCI6MTY4OTY5MTI2NX0.Cthqp7EX7gB0hQ5CH6A4-tpXpPXxBWJc3xE_Pg78Iok",
+          access_token: token,
         },
       };
       const formData = new FormData();
       formData.append("slip", filePreview);
       const response = await axios.put(
-        `https://api-car-rental.binaracademy.org/customer/order/${props.dataId}/slip`,
+        `https://api-car-rental.binaracademy.org/customer/order/${props.dataMobil.id}/slip`,
         formData,
         config
       );
       setTimeout(() => {
         onClickStepper(2);
       }, 1000);
-    } catch {
-      console.log("err");
+    } catch (err) {
+      console.log("err", err);
     }
   };
 
@@ -90,6 +89,7 @@ const UploadPembayaran = (props) => {
         <div className="d-flex justify-content-between">
           <div>
             <p className="fw-bold">Konfirmasi Pembayaran</p>
+            <p>{props.dataMobil.id}</p>
           </div>
           <div>
             <CountDown duration={10 * 60 * 1000} />

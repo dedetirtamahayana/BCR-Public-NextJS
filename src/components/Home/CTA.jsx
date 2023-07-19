@@ -15,10 +15,14 @@ const CTA = () => {
             style={{ height: "100%" }}
           >
             <h2 className="fw-bold">Sewa Mobil di (Lokasimu) Sekarang</h2>
-            <text className="fw-bold">
+
+            <p className="w-50">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              <p>eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </text>
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+
+            {/* <p>eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> */}
+
             <div>
               {/* {user && user.email ? (
                 <Button

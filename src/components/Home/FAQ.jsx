@@ -8,9 +8,8 @@ const Faq = () => {
           <div className="row">
             <div className="col-lg-5 col-md-12">
               <div className="faq-head">
-                <h2>Frequently Asked Question</h2>
-
-                {` Lorem ipsum dolor sit amet, consectetur adipiscing elit`}
+                <h2 className="fw-bold">Frequently Asked Question</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
               </div>
             </div>
             <div className="col-lg-7 col-md-12">

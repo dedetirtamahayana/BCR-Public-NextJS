@@ -5,10 +5,11 @@ import Image from "next/image";
 const ListItem = ({ title }) => {
   return (
     <li
-      style={{ listStyle: "none", marginBottom: "10px" }}
+      style={{ listStyle: "none", marginBottom: "20px" }}
       className="d-flex align-items-center"
     >
-      <Image src={ImgCheck} /> <span className="ms-2">{title}</span>
+      <Image src={ImgCheck} alt="ImgCheck" />{" "}
+      <span className="ms-2">{title}</span>
     </li>
   );
 };
@@ -20,11 +21,15 @@ const Feature = () => {
         <div className="row">
           <div className="col-sm-12 col-lg-6">
             <div className="p-5 p-lg-0">
-              <Image className="img-fluid object-fit-cover" src={ImgService} />
+              <Image
+                className="img-fluid object-fit-cover"
+                src={ImgService}
+                alt="ImgService"
+              />
             </div>
           </div>
-          <div className="col-sm-12 col-lg-6 fw-bold">
-            <h2 className="fw-bold">
+          <div className="col-sm-12 col-lg-6 ">
+            <h2 className="fw-bold mb-4">
               Best Car Rental for any kind of trip in (Lokasimu)!
             </h2>
             <p>

@@ -1,71 +1,71 @@
 import React, { useEffect, useState } from "react";
-import Succes from "../../../assets/img/success.svg";
-// import "./ticket.css";
-import { PDFDownloadLink, PDFViewer } from "react-pdf";
-import { FaDownload } from "react-icons/fa6";
-// import auth from "../../../utils/auth";
-import axios from "axios";
-import { Page, Text, Image, Document, StyleSheet, View } from "react-pdf";
+import Succes from "@/assets/img/success.svg";
+import Image from "next/image";
 
-// const styles = StyleSheet.create({
-//   body: {
-//     paddingTop: 35,
-//     paddingBottom: 65,
-//     paddingHorizontal: 35,
-//   },
-//   title: {
-//     fontSize: 24,
-//     textAlign: "center",
-//   },
-//   author: {
-//     fontSize: 12,
-//     textAlign: "center",
-//     marginBottom: 40,
-//   },
-//   subtitle: {
-//     fontSize: 18,
-//     margin: 12,
-//   },
-//   text: {
-//     margin: 12,
-//     fontSize: 14,
-//     textAlign: "justify",
-//     fontFamily: "Times-Roman",
-//   },
-//   image: {
-//     marginVertical: 15,
-//     marginHorizontal: 100,
-//   },
-//   header: {
-//     fontSize: 12,
-//     marginBottom: 20,
-//     textAlign: "center",
-//     color: "grey",
-//   },
-//   pageNumber: {
-//     position: "absolute",
-//     fontSize: 12,
-//     bottom: 30,
-//     left: 0,
-//     right: 0,
-//     textAlign: "center",
-//     color: "grey",
-//   },
-// });
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+import { FaDownload } from "react-icons/fa6";
+import auth from "@/utils/auth";
+import axios from "axios";
+import { Page, Text, Document, StyleSheet, View } from "@react-pdf/renderer";
+
+const styles = StyleSheet.create({
+  body: {
+    paddingTop: 35,
+    paddingBottom: 65,
+    paddingHorizontal: 35,
+  },
+  title: {
+    fontSize: 24,
+    textAlign: "center",
+  },
+  author: {
+    fontSize: 12,
+    textAlign: "center",
+    marginBottom: 40,
+  },
+  subtitle: {
+    fontSize: 18,
+    margin: 12,
+  },
+  text: {
+    margin: 12,
+    fontSize: 14,
+    textAlign: "justify",
+    fontFamily: "Times-Roman",
+  },
+  image: {
+    marginVertical: 15,
+    marginHorizontal: 100,
+  },
+  header: {
+    fontSize: 12,
+    marginBottom: 20,
+    textAlign: "center",
+    color: "grey",
+  },
+  pageNumber: {
+    position: "absolute",
+    fontSize: 12,
+    bottom: 30,
+    left: 0,
+    right: 0,
+    textAlign: "center",
+    color: "grey",
+  },
+});
 
 const Ticket = (props) => {
   const [datapembayaran, setdata] = useState();
-  // const token = auth.getToken();
+  const token = auth.getToken();
   const GetData = async () => {
     try {
       const config = {
         headers: {
-          access_token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImN1c3RvbWVyQGJjci5pbyIsInJvbGUiOiJDdXN0b21lciIsImlhdCI6MTY4OTY5MTI2NX0.Cthqp7EX7gB0hQ5CH6A4-tpXpPXxBWJc3xE_Pg78Iok",
+          access_token: token,
         },
       };
       const response = await axios.get(
-        `https://api-car-rental.binaracademy.org/customer/order/${props.dataId}`,
+        `https://api-car-rental.binaracademy.org/customer/order/${props.dataMobil.id}`,
         config
       );
       setdata(response.data);
@@ -101,7 +101,7 @@ const Ticket = (props) => {
     <section className="e-ticket">
       <div className="container">
         <div className="ticket">
-          <img src={Succes} alt="" />
+          <Image src={Succes} alt="Succes" />
           <h3>Pembayaran Berhasil</h3>
           <h5>Tunjukkan invoice ini ke petugas BCR di titik temu.</h5>
           <div className="print-ticket">

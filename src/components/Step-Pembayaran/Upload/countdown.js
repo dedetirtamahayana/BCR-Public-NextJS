@@ -1,6 +1,8 @@
-import React, {useEffect, useState} from "react";
+import { Router, useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 
-const Timer = ({duration}) => {
+const Timer = ({ duration }) => {
+  const router = useRouter();
   const [time, setTime] = useState(duration);
 
   useEffect(() => {
@@ -13,6 +15,7 @@ const Timer = ({duration}) => {
     if (time <= 0) {
       clearInterval();
       alert("waktumu habis");
+      router.push("/search");
     }
   });
 

@@ -1,14 +1,13 @@
 import { useSelector } from "react-redux";
-// import auth from "../utils/auth";
+import auth from "@/utils/auth";
 import { Button } from "react-bootstrap";
 import { useRouter } from "next/router";
 import Link from "next/link";
 const Menu = () => {
-  //   const { user } = useSelector((state) => state.login);
+  const { user } = useSelector((state) => state.login);
   const router = useRouter();
   const handleLogout = () => {
     auth.logout();
-    navigate("/login");
   };
 
   return (
@@ -75,45 +74,35 @@ const Menu = () => {
                   FAQ
                 </Link>
               </li>
-              {/* {
-               user && user.email ? (
-                <Button type="button" variant="danger" 
-                onClick={() => handleLogout()}
-                >
-                  Logout
-                </Button>
-               ) : (
-                <>
-                  <Button type="button" variant="success" 
-                  className="ms-3 me-3"
-                  onClick={() => navigate('/login')}
+              <div>
+                {user && user.email ? (
+                  <Button
+                    type="button"
+                    variant="danger"
+                    onClick={() => handleLogout()}
                   >
-                    Login
+                    Logout
                   </Button>
-                  <Button type="button" variant="outline-success" 
-                  onClick={() => navigate('/register')}
-                  >
-                    Register
-                  </Button>
-                </>
-                
-               )
-              } */}
-              <Button
-                type="button"
-                variant="success"
-                className="ms-3 me-3"
-                onClick={() => router.push("/login")}
-              >
-                Login
-              </Button>
-              <Button
-                type="button"
-                variant="outline-success"
-                onClick={() => router.push("/register")}
-              >
-                Register
-              </Button>
+                ) : (
+                  <>
+                    <Button
+                      type="button"
+                      variant="success"
+                      className="ms-3 me-3"
+                      onClick={() => router.push("/login")}
+                    >
+                      Login
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline-success"
+                      onClick={() => router.push("/register")}
+                    >
+                      Register
+                    </Button>
+                  </>
+                )}
+              </div>
             </ul>
           </div>
         </div>

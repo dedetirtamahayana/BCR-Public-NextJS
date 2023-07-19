@@ -6,7 +6,9 @@ import ImgLeft from "@/assets/img/arrow-left.png";
 import Image from "next/image";
 
 const TestimonialCard = ({ img, description, rating, isActive = false }) => {
-  const Rating = [...Array(rating)].map((_, i) => <Image src={ImgStar} />);
+  const Rating = [...Array(rating)].map((_, i) => (
+    <Image src={ImgStar} alt="ImgStar" />
+  ));
   return (
     <div className={`carousel-item ${isActive ? "active" : ""}`}>
       <div className="row ">
@@ -14,10 +16,10 @@ const TestimonialCard = ({ img, description, rating, isActive = false }) => {
           <div className="card-testimonial card p-5" style={{ width: "70%" }}>
             <div className="d-flex flex-lg-row flex-sm-column justify-content-center align-items-center">
               <div className="col-lg-4  text-center">
-                <Image src={img} />
+                <Image src={img} alt="person" />
               </div>
               <div className="col-lg-8 col-sm-12 pb-2">
-                {Rating.map((item) => item)}
+                {Rating.map((item, i) => item)}
 
                 <div className="pb-2 pt-2 fw-bold">{description}</div>
                 <div>John Dee 32, Bromo</div>
@@ -34,9 +36,11 @@ const Testimonial = () => {
   return (
     <section className="mb-4" id="testimonial">
       <div className="container">
-        <div className="text-center fw-bold">
-          <h2 className="fw-bold">Testimonial</h2>
-          <p>Berbagai macam review positif dari para pelanggan kami</p>
+        <div className="text-center ">
+          <h2 className="fw-bold mb-4">Testimonial</h2>
+          <p className="mb-5">
+            Berbagai macam review positif dari para pelanggan kami
+          </p>
         </div>
         <div
           className="carousel slide"
@@ -68,7 +72,11 @@ const Testimonial = () => {
               data-bs-slide="prev"
               variant="none"
             >
-              <Image src={ImgLeft} style={{ width: "32px", height: "32px" }} />
+              <Image
+                src={ImgLeft}
+                style={{ width: "32px", height: "32px" }}
+                alt="ImgLeft"
+              />
             </Button>
             <Button
               type="button"
@@ -76,7 +84,11 @@ const Testimonial = () => {
               data-bs-slide="next"
               variant="none"
             >
-              <Image src={ImgRight} style={{ width: "32px", height: "32px" }} />
+              <Image
+                src={ImgRight}
+                style={{ width: "32px", height: "32px" }}
+                alt="ImgRight"
+              />
             </Button>
           </div>
         </div>

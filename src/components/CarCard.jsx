@@ -23,7 +23,7 @@ const CarCard = ({ car, minPrice, maxPrice, name, category, status }) => {
   };
   return (
     <Card className="mb-5">
-      <Card.Img className="p-3" src={car.image}></Card.Img>
+      <Card.Img className="p-3" src={car.image} alt="image-car"></Card.Img>
       <Card.Body>
         <Card.Title>{car.name}</Card.Title>
         <Card.Title>{formatter.format(car.price)} / hari</Card.Title>

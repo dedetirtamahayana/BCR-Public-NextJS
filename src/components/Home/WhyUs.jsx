@@ -6,14 +6,14 @@ import ImgPrice from "@/assets/img/icon_price.png";
 
 const CardWhyUs = ({ icon, title, description }) => {
   return (
-    <div className="col-sm-12 col-lg-3">
-      <div className="card p-3">
+    <div className="col-sm-12 col-lg-3 ">
+      <div className="card p-3 h-100">
         <div className="mb-2">
-          <Image src={icon} />
+          <Image src={icon} alt="icon" />
         </div>
         <div>
-          <span className="d-block mb-2">{title}</span>
-          <span className="d-block mb-2">{description}</span>
+          <span className="d-block my-3 fw-bold">{title}</span>
+          <span className="d-block">{description}</span>
         </div>
       </div>
     </div>
@@ -24,11 +24,11 @@ const WhyUs = () => {
   return (
     <section className="mb-5" id="why-us">
       <div className="container">
-        <div className="text-center text-lg-start fw-bold">
-          <h2 className="fw-bold">Why Us?</h2>
+        <div className="text-center text-lg-start mb-4">
+          <h2 className="fw-bold mb-3">Why Us?</h2>
           <p>Mengapa harus pilih Binar Car Rental</p>
         </div>
-        <div className="row g-3 fw-bold">
+        <div className="row g-3 ">
           <CardWhyUs
             icon={ImgComplete}
             title="Mobil Lengkap"
