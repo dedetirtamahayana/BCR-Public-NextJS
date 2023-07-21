@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import ImgStar from "@/assets/img/img-Star.png";
+import ImgStar from "@/assets/img/img-star.png";
 import ImgPhoto from "@/assets/img/img_photo.png";
 import ImgRight from "@/assets/img/arrow-right.png";
 import ImgLeft from "@/assets/img/arrow-left.png";

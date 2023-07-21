@@ -1,5 +1,5 @@
 {
-  "extends": ["next","prettier","next/babel"],
+  "extends": ["plugin:@next/next/recommended","prettier","next/babel"],
   "rules": {
     "no-unused-vars":1,
     "no-console":1  
