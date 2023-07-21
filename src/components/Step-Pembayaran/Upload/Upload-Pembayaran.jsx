@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Copy from "../../../assets/img/fi_copy.png";
+import Copy from "@/assets/img/fi_copy.png";
+import Image from "next/image";
 import {
   Row,
   Col,
@@ -89,7 +90,6 @@ const UploadPembayaran = (props) => {
         <div className="d-flex justify-content-between">
           <div>
             <p className="fw-bold">Konfirmasi Pembayaran</p>
-            <p>{props.dataMobil.id}</p>
           </div>
           <div>
             <CountDown duration={10 * 60 * 1000} />
@@ -197,7 +197,7 @@ const UploadPembayaran = (props) => {
                       id="button-addon2"
                       className="disable"
                     >
-                      <img src={Copy} alt="Copy"></img>
+                      <Image src={Copy} alt="Copy"></Image>
                     </Button>
                   </InputGroup>
                   <FormLabel>Nominal</FormLabel>
@@ -211,7 +211,7 @@ const UploadPembayaran = (props) => {
                       id="button-addon2"
                       className="disable"
                     >
-                      <img src={Copy} alt="Copy"></img>
+                      <Image src={Copy} alt="Copy"></Image>
                     </Button>
                   </InputGroup>
                 </ListGroup.Item>

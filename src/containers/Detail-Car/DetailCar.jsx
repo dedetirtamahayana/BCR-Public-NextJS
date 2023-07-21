@@ -196,7 +196,6 @@ const DetailCar = () => {
                         showIcon
                         id="dateStartEnd"
                         className="datePicker w-100"
-                        // eslint-disable-next-line react/jsx-boolean-value
                         selectsRange={true}
                         startDate={dateStart}
                         endDate={dateEnd}
