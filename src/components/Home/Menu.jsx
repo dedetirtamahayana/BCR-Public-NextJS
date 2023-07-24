@@ -11,7 +11,7 @@ const Menu = () => {
   };
 
   return (
-    <div>
+    <header>
       <nav
         className="navbar navbar-expand-lg bg-body-tertiary"
         style={{ zIndex: "3", backgroundColor: "#F1F3FF" }}
@@ -159,7 +159,7 @@ const Menu = () => {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 export default Menu;

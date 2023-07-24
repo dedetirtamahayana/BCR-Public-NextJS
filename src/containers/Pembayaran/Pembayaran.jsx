@@ -63,7 +63,7 @@ const Pembayaran = () => {
   return (
     <Auth>
       <Navigation />
-      <div className="payment">
+      <section className="payment">
         <div className="container">
           <Col>
             <Row>
@@ -86,7 +86,7 @@ const Pembayaran = () => {
             </Row>
           </Col>
         </div>
-      </div>
+      </section>
       <DetailPesanan dataMobil={dataMobil} />
       {RenderContent()}
       <Footer />

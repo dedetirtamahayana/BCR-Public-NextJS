@@ -25,7 +25,9 @@ const Login = () => {
             <div className="col-6 lf-login">
               <div className="logo-login">
                 <a href="/">
-                  <Image src={Logologin} alt="BCR" className="homelogo" />
+                  <figure>
+                    <Image src={Logologin} alt="BCR" className="homelogo" />
+                  </figure>
                 </a>
 
                 <Image src={Closelogo} alt="close" className="closelogo" />
@@ -51,6 +53,7 @@ const Login = () => {
                   <Form.Control
                     type="email"
                     placeholder="Enter email"
+                    data-testid="InputDynamicInput"
                     onChange={(e) => {
                       setFormValues({ ...formValues, email: e.target.value });
                     }}
@@ -64,6 +67,7 @@ const Login = () => {
                   <Form.Control
                     type="password"
                     placeholder="Password"
+                    data-testid="InputPassword"
                     onChange={(e) => {
                       setFormValues({
                         ...formValues,
@@ -82,6 +86,7 @@ const Login = () => {
                   variant="primary"
                   type="submit"
                   className="w-100 mb-3"
+                  data-testid="ButtonSubmit"
                   disabled={loading}
                 >
                   {loading ? "Sabar bangg..." : "Sign In"}
@@ -97,7 +102,9 @@ const Login = () => {
 
             <div className="col-6 rg-login">
               <h1 className="text-white mb-5">Binar Car Rental</h1>
-              <Image className="w-100" src={loginimage} alt="" />
+              <figure>
+                <Image className="w-100" src={loginimage} alt="loginimage" />
+              </figure>
             </div>
           </div>
         </div>

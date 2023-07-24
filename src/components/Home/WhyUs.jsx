@@ -9,7 +9,9 @@ const CardWhyUs = ({ icon, title, description }) => {
     <div className="col-sm-12 col-lg-3 ">
       <div className="card p-3 h-100">
         <div className="mb-2">
-          <Image src={icon} alt="icon" />
+          <figure className="figure">
+            <Image src={icon} alt="icon" />
+          </figure>
         </div>
         <div>
           <span className="d-block my-3 fw-bold">{title}</span>

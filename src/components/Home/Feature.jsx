@@ -21,16 +21,18 @@ const Feature = () => {
         <div className="row">
           <div className="col-sm-12 col-lg-6">
             <div className="p-5 p-lg-0">
-              <Image
-                className="img-fluid object-fit-cover"
-                src={ImgService}
-                alt="ImgService"
-              />
+              <figure>
+                <Image
+                  className="img-fluid object-fit-cover"
+                  src={ImgService}
+                  alt="ImgService"
+                />
+              </figure>
             </div>
           </div>
           <div className="col-sm-12 col-lg-6 ">
             <h2 className="fw-bold mb-4">
-              Best Car Rental for any kind of trip in (Lokasimu)!
+              <mark>Best Car Rental</mark> for any kind of trip in (Lokasimu)!
             </h2>
             <p>
               Sewa mobil di (Lokasimu) bersama Binar Car Rental jaminan harga

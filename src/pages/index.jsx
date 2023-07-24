@@ -8,7 +8,7 @@ import WhyUs from "@/components/Home/WhyUs";
 
 function HomePage() {
   return (
-    <div>
+    <main>
       <Hero />
       <Feature />
       <WhyUs />
@@ -16,7 +16,7 @@ function HomePage() {
       <CTA />
       <FAQ />
       <Footer />
-    </div>
+    </main>
   );
 }
 export default HomePage;

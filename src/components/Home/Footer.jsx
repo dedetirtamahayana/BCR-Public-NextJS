@@ -10,7 +10,7 @@ import Image from "next/image";
 
 export const Footer = () => {
   return (
-    <section className="mb-3 pt-5" id="footer">
+    <footer className="mb-3 pt-5" id="footer">
       <div className="container">
         <div className="d-flex flex-column flex-lg-row justify-content-between align-items-start gap-3">
           <div className="fw-bold">
@@ -90,7 +90,7 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-    </section>
+    </footer>
   );
 };
 export default Footer;

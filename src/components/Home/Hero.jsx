@@ -21,9 +21,11 @@ const Hero = () => {
           <div className="col-sm-12 col-lg-6">
             <div className="row">
               <div className="col-lg-11 hero-text">
-                <h1 className="fw-bold mb-3">
-                  Sewa &amp; Rental Mobil Terbaik di kawasan (Lokasimu)
-                </h1>
+                <header>
+                  <h1 className="fw-bold mb-3">
+                    Sewa &amp; Rental Mobil Terbaik di kawasan (Lokasimu)
+                  </h1>
+                </header>
                 <div className="mb-4">
                   <p>
                     Selamat datang di Binar Car Rental. Kami menyediakan mobil
@@ -46,11 +48,13 @@ const Hero = () => {
           </div>
           <div className="col-sm-12 col-lg-6 ">
             <div className="hero-image">
-              <Image
-                src={ImageCar}
-                className="img-fluid object-fit-cover"
-                alt="ImageCar"
-              />
+              <figure>
+                <Image
+                  src={ImageCar}
+                  className="img-fluid object-fit-cover"
+                  alt="ImageCar"
+                />
+              </figure>
             </div>
           </div>
         </div>

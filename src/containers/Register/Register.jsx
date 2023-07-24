@@ -16,7 +16,7 @@ function Register() {
     <NoAuth>
       <div>
         <Row>
-          <Col className="col-lg-6">
+          <section className="col-lg-6">
             <Container
               style={{ minHeight: "100vh" }}
               className="d-flex justify-content-center align-items-center"
@@ -31,12 +31,12 @@ function Register() {
                   <Image src={LogoBCR} alt=""></Image>
                   <Image className="d-lg-none d-sm-flex" src={Close} alt="" />
                 </div>
-                <h3 className="mb-3">Sign Up</h3>
+                <h1 className="mb-3">Sign Up</h1>
                 <div className="mb-3">
                   <Form.Label htmlFor="text">Name</Form.Label>
                   <Form.Control
                     name="name"
-                    id="name"
+                    data-testid="Name"
                     placeholder="your name"
                     onChange={(e) => {
                       setFormValues({
@@ -52,7 +52,7 @@ function Register() {
                   <Form.Label htmlFor="email">Email</Form.Label>
                   <Form.Control
                     name="email"
-                    id="email"
+                    data-testid="Email"
                     placeholder="contoh: john@gmail.com"
                     onChange={(e) => {
                       setFormValues({
@@ -69,7 +69,7 @@ function Register() {
                   <Form.Control
                     type="password"
                     name="password"
-                    id="password"
+                    data-testid="Password"
                     placeholder="password 6+"
                     onChange={(e) => {
                       setFormValues({
@@ -89,6 +89,7 @@ function Register() {
                   type="submit"
                   variant="primary"
                   className="d-block w-100 mb-3 mt-3"
+                  data-testid="button"
                   disabled={loading}
                 >
                   {loading ? "please wait...." : "Sign Up"}
@@ -101,10 +102,12 @@ function Register() {
                 </div>
               </Form>
             </Container>
-          </Col>
-          <Col className="col-lg-6 d-lg-flex d-sm-none">
-            <Image className="w-100" src={BCR83} alt="BCR83" />
-          </Col>
+          </section>
+          <section className="col-lg-6 d-lg-flex d-sm-none">
+            <figure>
+              <Image className="w-100" src={BCR83} alt="BCR83" />
+            </figure>
+          </section>
         </Row>
       </div>
     </NoAuth>

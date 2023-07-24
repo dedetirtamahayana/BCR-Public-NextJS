@@ -166,7 +166,10 @@ const DetailCar = () => {
             </Col>
             <Col className="col-4">
               <Card>
-                <Card.Img className="p-3" src={detailCar.image}></Card.Img>
+                <figure>
+                  <Card.Img className="p-3" src={detailCar.image}></Card.Img>
+                </figure>
+
                 <Card.Body>
                   <Card.Title>{detailCar.name}</Card.Title>
                   <Card.Title style={{ color: "#8A8A8A", fontSize: "15px" }}>
